@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "O CRM Omnichannel com IA que sua empresa precisa. Centralize WhatsApp, Instagram e Email em uma única plataforma inteligente." 
+} = Astro.props;
+
+const siteUrl = "https://hubcrm.pro";
+const ogImage = `${siteUrl}/og-image.png`;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- SEO Basic -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="CRM, WhatsApp, Instagram, Email, IA, Inteligência Artificial, Atendimento, Omnichannel, Vendas, Pipeline, Kanban" />
+    <meta name="author" content="HubCRM" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
+    
+    <!-- Open Graph (Facebook & WhatsApp & LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="HubCRM" />
+    
+    <!-- Facebook Domain Verification -->
+    <meta name="facebook-domain-verification" content="4ua8qfah82aogk156fm50ww4xmdn8z" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- WhatsApp & Telegram Preview -->
+    <meta property="og:image:alt" content="HubCRM - CRM Omnichannel com IA" />
+    
+    <!-- Apple & Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="HubCRM" />
+    <meta name="theme-color" content="#3b82f6" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Global Styles -->
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 font-sans antialiased">
+    <slot />
+  </body>
+</html>

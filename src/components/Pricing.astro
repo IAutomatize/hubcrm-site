@@ -1,0 +1,131 @@
+---
+const appUrl = "https://app.hubcrm.pro";
+
+const plans = [
+  {
+    name: "Gratuito",
+    price: "0",
+    period: "para sempre",
+    description: "Perfeito para começar e conhecer a plataforma",
+    features: [
+      "2 usuários",
+      "100 contatos",
+      "1 canal de comunicação",
+      "20 negócios no Kanban",
+      "50 conversas IA/mês",
+      "100MB de armazenamento"
+    ],
+    cta: "Começar Grátis",
+    popular: false
+  },
+  {
+    name: "Profissional",
+    price: "79",
+    period: "/mês",
+    description: "Para equipes que precisam de mais poder",
+    features: [
+      "5 usuários",
+      "5.000 contatos",
+      "3 canais de comunicação",
+      "500 negócios no Kanban",
+      "1.000 conversas IA/mês",
+      "5GB de armazenamento",
+      "Relatórios avançados",
+      "Acesso à API",
+      "Suporte prioritário"
+    ],
+    cta: "Assinar Agora",
+    popular: true
+  },
+  {
+    name: "Enterprise",
+    price: "Personalizado",
+    period: "",
+    description: "Solução completa para grandes operações",
+    features: [
+      "Usuários ilimitados",
+      "Contatos ilimitados",
+      "Canais ilimitados",
+      "Negócios ilimitados",
+      "Conversas IA ilimitadas",
+      "Armazenamento ilimitado",
+      "White label",
+      "Suporte dedicado",
+      "SLA garantido"
+    ],
+    cta: "Falar com Vendas",
+    popular: false
+  }
+];
+---
+
+<section id="planos" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
+        Planos para cada fase do seu
+        <span class="text-primary-600">crescimento</span>
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Comece grátis, escale quando precisar
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-6">
+      {plans.map((plan) => (
+        <div class={`relative bg-white rounded-2xl p-8 ${plan.popular ? 'border-2 border-primary-500 shadow-xl scale-105' : 'border border-gray-200 shadow-sm'} transition-all duration-300 hover:shadow-lg`}>
+          {plan.popular && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="bg-primary-600 text-white text-sm font-semibold px-4 py-1 rounded-full">
+                Mais Popular
+              </span>
+            </div>
+          )}
+          
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-gray-900">{plan.name}</h3>
+            <div class="mt-4">
+              {plan.price === "Personalizado" ? (
+                <span class="text-3xl font-bold text-gray-900">{plan.price}</span>
+              ) : (
+                <div class="flex items-baseline justify-center gap-1">
+                  <span class="text-sm text-gray-500">R$</span>
+                  <span class="text-5xl font-bold text-gray-900">{plan.price}</span>
+                  <span class="text-gray-500">{plan.period}</span>
+                </div>
+              )}
+            </div>
+            <p class="mt-2 text-sm text-gray-500">{plan.description}</p>
+          </div>
+          
+          <ul class="mt-8 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-center gap-3 text-sm text-gray-600">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href={plan.price === "Personalizado" ? "https://wa.me/5515991716525?text=Olá! Tenho interesse no plano Enterprise do HubCRM" : `${appUrl}/register`}
+            target={plan.price === "Personalizado" ? "_blank" : "_self"}
+            class={`mt-8 block w-full py-3 px-4 text-center font-semibold rounded-xl transition-all ${
+              plan.popular 
+                ? 'bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl' 
+                : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+            }`}
+          >
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <p class="mt-12 text-center text-sm text-gray-500">
+      Todos os planos incluem 14 dias de teste grátis. Cancele quando quiser.
+    </p>
+  </div>
+</section>
