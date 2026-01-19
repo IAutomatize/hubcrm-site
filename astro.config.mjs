@@ -4,8 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://iautomatize.github.io',
-  base: '/hubcrm-site',
+  site: 'https://hubcrm.pro',
   vite: {
     plugins: [tailwindcss()]
   }
